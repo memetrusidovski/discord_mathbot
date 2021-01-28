@@ -2,6 +2,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const Canvas = require('canvas');
 const m  = require( "./mathjax.js");
+var { derivative, evaluate } = require("mathjs");
 
 
 const client = new Discord.Client();
@@ -13,9 +14,11 @@ client.once('ready', () => {
 
 client.on('guildMemberAdd', async (member,message) => {
 	const channel = member.guild.channels.cache.find(ch => ch.name === 'general');
+	x = await evaluate(message);
 
 	eq = await m(message);
-	console.log(eq[1].a);
+	console.log(x);
+	//console.log(derivative(message,'x'), "<----");
 
 	const wid = parseInt(eq[1].a.slice(0,2)) *20;
 	const hght = parseInt(eq[1].b.slice(0,2)) *20;
@@ -35,6 +38,7 @@ client.on('guildMemberAdd', async (member,message) => {
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
 
 	channel.send(`Your Question Formatted is: `, attachment);
+	channel.send(x, 'the value is: ', x);
 });
 
 client.on('message', message => {

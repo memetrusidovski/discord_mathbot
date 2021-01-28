@@ -1,5 +1,5 @@
 var mathjax = require("mathjax");
-
+var { derivative } = require("mathjs");
 
 function getEquation (userString){
 //var s = 'x = alpha int (-b +- sqrt(b^2-4ac))/(2a) (xy^2)';
