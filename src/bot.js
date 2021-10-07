@@ -13,7 +13,7 @@ client.once('ready', () => {
 });
 
 client.on('guildMemberAdd', async (member,message) => {
-	const channel = member.guild.channels.cache.find(ch => ch.name === 'general');
+	const channel = member.guild.channels.cache.find(ch => ch.name === 'general-math');
 	x = await evaluate(message);
 
 	eq = await m(message);
