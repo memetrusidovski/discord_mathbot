@@ -16,6 +16,7 @@ client.on('guildMemberAdd', async (member) => {
 
 	eq= await m;
 
+	const v = "Test";
     const canvas = Canvas.createCanvas(700, 250);
 	const ctx = canvas.getContext('2d');
 
